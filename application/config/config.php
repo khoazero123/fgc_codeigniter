@@ -23,8 +23,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+
+
 $config['sess_expiration'] = 0;
-$config['base_url'] = 'http://localhost/fgc/MVC/';
+$config['base_url'] = SITE_URL;
 
 $config['fb_appid'] = '582442021872439';
 $config['fb_secret'] = '883570c57cad900d3ff41907e895629a';

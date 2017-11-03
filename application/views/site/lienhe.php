@@ -36,7 +36,7 @@
                             <label id="label_user_email">Email</label>
                         </div>
                         <div class="col-md-6 col-sm-8 col-xs-12">
-                            <input type="email" name="info[user_email]" id="info_user_email" class="form-control">
+                            <input type="email" name="info[user_email]" id="info_user_email" class="form-control" required>
                         </div>
                     </div>
                     <div class="space10"></div>

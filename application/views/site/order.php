@@ -6,7 +6,7 @@
             <div class="panel-body">
                 <input type="text" class="form-control" name="user_info[name]" placeholder="Họ tên Quý khách" value="<?=isset($user['name']) ? $user['name'] : '' ?>" aria-describedby="basic-addon1" required>
                 <input type="email" class="form-control" name="user_info[email]" placeholder="Địa chỉ Email" value="<?=isset($user['email']) ? $user['email'] : '' ?>" aria-describedby="basic-addon1">
-                <input type="text" class="form-control" name="user_info[phone]" placeholder="Số điện thoại" value="<?=isset($user['phone']) ? $user['phone'] : '' ?>" aria-describedby="basic-addon1" required>
+                <input type="text" class="form-control phone" name="user_info[phone]" placeholder="Số điện thoại" value="<?=isset($user['phone']) ? $user['phone'] : '' ?>" aria-describedby="basic-addon1" required>
                 <div> Địa chỉ <span class="txt2">(số nhà, đường, tỉnh) *</span>
                     <textarea class="form-control" rows="5" name="user_info[address]" id="buyer_address" style="width: 100%"><?=isset($user['address']) ? $user['address'] : '' ?></textarea>
                 </div>
@@ -17,7 +17,7 @@
             <div class="panel-body">
                 <input type="checkbox" onchange="fill_ship_info()"/> Giao hàng tới cùng địa chỉ
                 <input type="text" class="form-control" name="user_info[ship_to_name]" placeholder="Họ tên" aria-describedby="basic-addon1" required>
-                <input type="text" class="form-control" name="user_info[ship_to_phone]" placeholder="Số điện thoại" aria-describedby="basic-addon1" required>
+                <input type="text" class="form-control phone" name="user_info[ship_to_phone]" placeholder="Số điện thoại" aria-describedby="basic-addon1" required>
 
                 <div> Địa chỉ <span class="txt2">(số nhà, đường, tỉnh) *</span>
                     <textarea class="form-control" rows="5" name="user_info[ship_to_address]" id="buyer_address" style="width: 100%" required></textarea>
@@ -94,12 +94,15 @@
 </form>
 </div>
 <script type="text/javascript">
+    $('.phone').on('input', function() {
+        $(this).val($(this).val().replace(/[^0-9\+]/gi, ''));
+    });
     $(window).load(function () {
         $('.format-curency').each(function(i, obj) {
             var price = $(obj).data('price');
             var new_price = format_curency(price);
             if(price>0) $(obj).text(new_price);
-            console.log(price+ ' : '+new_price);
+            //console.log(price+ ' : '+new_price);
         });
     });
     function fill_ship_info() {
